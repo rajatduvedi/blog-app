@@ -1,0 +1,44 @@
+<div class="card_container">
+  <div class="carousel-container">
+    <div  class="controls">
+      <button
+      (click)="scroll(false, list)"
+       >
+       prev
+       <!-- <md-icon>keyboard_arrow_left </md-icon> -->
+      </button>
+   </div>
+    <div
+      class="carousel-wrapper" #carouselwrapper
+      [style.width]="width + 'px'" >
+      <div
+        class="carouselamos"
+        [style.transform]="'translateX('+amount+'px)'"
+        [style.webkitTransform]="'translateX('+amount+'px)'"
+        #list >
+        <div class="image" *ngFor="let image of imageList;let i = index">
+          <!-- <img src="{{image}}" height="100"/> -->
+          <button>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                <mat-panel-title>
+                  catogory {{i+1}}
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+                </mat-expansion-panel-header>
+            </mat-expansion-panel>
+          </button>
+        </div>
+    </div>
+    </div>
+    <div  class="controls">
+      <button
+      (click)="scroll(true, list)"
+      >
+      next
+       <!-- <md-icon >keyboard_arrow_right </md-icon> -->
+     </button>
+   </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+
+<mat-toolbar color="primary">
+  <span>
+    <a routerLink="">Blog-bita.0.1</a>
+  </span>
+  <button mat-raised-button color="accent" [routerLink]="['admin-blog']">Blog admin</button>
+</mat-toolbar>
+<app-carousel [imageList]="images" [variable]="1"></app-carousel>
+
+<div class="app-main-content">
+  <router-outlet></router-outlet>
+</div>
+<footer>
+</footer>
