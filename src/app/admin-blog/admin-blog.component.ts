@@ -12,6 +12,7 @@ export class AdminBlogComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    alert("admin")
   }
 
   // showInPopup() {

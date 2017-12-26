@@ -1,63 +1,29 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
+import { DataService } from '../app-services/data/data-service.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'app';
-  images = [
-    'assets/image1.jpg',
-    'assets/image2.jpg',
-    'assets/image3.jpg' ,
-    'assets/image4.jpg' ,
-    'assets/image5.jpg' ,
-    'assets/image6.jpg' ,
-    'assets/image7.jpg' ,
-    'assets/image8.jpg',
-    'assets/image9.jpg',
-    'assets/image3.jpg' ,
-    'assets/image4.jpg' ,
-    'assets/image5.jpg' ,
-    'assets/image6.jpg' ,
-    'assets/image7.jpg' ,
-    'assets/image1.jpg',
-    'assets/image2.jpg',
-    'assets/image8.jpg' ,
-    'assets/image9.jpg' ,
-    'assets/image5.jpg' ,
-    'assets/image6.jpg' ,
-    'assets/image7.jpg',
-    'assets/image6.jpg' ,
-    'assets/image7.jpg' ,
-    'assets/image1.jpg',
-    'assets/image2.jpg',
-    'assets/image3.jpg' ,
-    'assets/image4.jpg' ,
-    'assets/image8.jpg' ,
-    'assets/image9.jpg' ,
-    'assets/image6.jpg' ,
-    'assets/image7.jpg' ,
-    'assets/image1.jpg',
-    'assets/image2.jpg',
-    'assets/image8.jpg' ,
-    'assets/image9.jpg' ,
-    'assets/image5.jpg' ,
-    'assets/image6.jpg' ,
-    'assets/image7.jpg',
-    'assets/image6.jpg' ,
-    'assets/image7.jpg' ,
-    'assets/image6.jpg' ,
-    'assets/image7.jpg' ,
-    'assets/image1.jpg',
-    'assets/image2.jpg',
-    'assets/image8.jpg' ,
-    'assets/image9.jpg' ,
-    'assets/image5.jpg' ,
-    'assets/image6.jpg' ,
-    'assets/image7.jpg',
-    'assets/image6.jpg' ,
-    'assets/image7.jpg' ,
-  ]
+export class AppComponent implements OnInit {
+  counter= 1;
+  categoryList = [];
+  loaded = false;
+  imageList =[];
+  constructor(private dataService: DataService){
+
+
+  }
+  ngOnInit() {
+    this.dataService.getAllCategory()
+      .subscribe(
+        res =>{
+          console.log(res);
+          this.categoryList = res;
+          this.loaded = true;
+        }
+      )
+
+  }
 }

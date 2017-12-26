@@ -1,0 +1,14 @@
+.example-card {
+  width: 300px;
+}
+.blogList{
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.example-header-image {
+  background-image: url('/assets/alt.jpg');
+  background-size: cover;
+}

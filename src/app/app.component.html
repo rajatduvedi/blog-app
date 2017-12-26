@@ -3,12 +3,23 @@
   <span>
     <a routerLink="">Blog-bita.0.1</a>
   </span>
-  <button mat-raised-button color="accent" [routerLink]="['admin-blog']">Blog admin</button>
+  <button mat-raised-button color="accent" [routerLink]="['/admin']">Blog admin</button>
+  <section>
+  </section>
 </mat-toolbar>
-<app-carousel [imageList]="images" [variable]="1"></app-carousel>
 
+<!-- <section *ngIf ="loaded">
+  <h1>Popular category</h1>
+<app-carousel [categoryList]="categoryList" [variable]="1"></app-carousel>
+</section> -->
+<!-- <section *ngIf ="loaded">
+  <h1>Popular Biography</h1>
+<app-carousel [imageList]="imageList" [variable]="1"></app-carousel>
+</section> -->
+<router-outlet name="header"></router-outlet>
 <div class="app-main-content">
   <router-outlet></router-outlet>
+  <!-- <app-carousel [imageList]="imageList" [variable]="1"></app-carousel> -->
 </div>
 <footer>
 </footer>

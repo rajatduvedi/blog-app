@@ -7,17 +7,21 @@ import { Component, OnInit , Input , ViewChild } from '@angular/core';
 })
 export class CarouselComponent implements OnInit {
   @Input() imageList:any;
+  @Input() categoryList: any;
   @Input() variable:any;
-  @Input() width: number = 1400;
+  @Input() width: number = 800;
   @ViewChild('carouselwrapper') elementView;
   childIndex: number = 0;
   amount: number = 0;
   public images: any;
+  data: any;
   constructor() {
 }
 
   ngOnInit() {
-    // console.log(this.imageList);
+    this.data = this.categoryList
+    console.log(this.categoryList);
+    console.log(this.imageList);
     console.log(this.variable);
   }
   scroll(forward: boolean, elem: any) {

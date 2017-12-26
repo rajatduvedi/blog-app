@@ -9,13 +9,16 @@ export interface IBlog {
     blogContent: string; // Full Article
     blogimageUrl: string; // optional -- for future
     blogGuidelinesHTML: string; // guidelines for the user
+    excerptText: string;
     comments: IComment[];
     likes: ILikes[];
+    totalLikes: number;
     socialMediaShares: ISocialMediaShare [];
     favorites: string[]; // userIds
     tags: string[];
-    category: string[];
+    category: ICategory[];
     status: string;
+    blogCreationDate: Date;
     scheduledActivationDate: Date;
     scheduledDeActivationDate: Date;
     getTotalLikes(): number;
@@ -33,13 +36,17 @@ export class Blog implements IBlog {
   blogContent: string; // Full Article
   blogimageUrl: string; // optional -- for future
   blogGuidelinesHTML: string; // guidelines for the user
+  excerptText: string;
   comments: IComment[];
   likes: ILikes[];
+  totalLikes: number;
   socialMediaShares: ISocialMediaShare [];
   favorites: string[]; // userIds
   tags: string[];
-  category: string[];
+  category: ICategory[];
+
   status: string;
+  blogCreationDate: Date;
   scheduledActivationDate: Date;
   scheduledDeActivationDate: Date;
   critics: ICritics[];
@@ -94,6 +101,8 @@ export interface IComment {
     owner: string; // userId
     userProfileName: string; // username displayed on the blog
     userAvatarUrl: string;
+    likes: ILikes[];
+    totalLikes: number;
     // totalLikes: number; // future
     // totalDislikes: number;
     replies: IComment[];  //  reply or comment
@@ -104,6 +113,8 @@ export class Comment implements IComment {
     timePosted: Date;
     owner: string; // userId
     userAvatarUrl: string;
+    likes: ILikes[];
+    totalLikes: number;
     userProfileName: string; // username displayed on the blog
     // totalLikes: number; // future
     // totalDislikes: number; // future
@@ -128,6 +139,38 @@ export class Critics implements ICritics {
     owner: string; // userId
     blogTag: String[];
     replies: IComment[];  //  reply or comment
+    constructor() {
+        //
+    }
+
+}
+
+export interface ICategory {
+  categorykey: string;
+  categoryValue: string;
+  parentCategoryId: string;
+  subCategories: ISubCategories[];
+}
+
+export class Category implements ICategory {
+  categorykey: string;
+  categoryValue: string;
+  parentCategoryId: string;
+  subCategories: ISubCategories[];
+    constructor() {
+        // this.key = data.key;
+        // this.displayedValue = data.displayedValue;
+        // this.parentCategoryId = data.parentCategoryId
+    }
+
+}
+
+export interface ISubCategories {
+
+}
+
+export class SubCategories implements ISubCategories {
+
     constructor() {
         //
     }

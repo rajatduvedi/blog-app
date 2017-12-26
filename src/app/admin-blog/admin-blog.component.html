@@ -1,4 +1,4 @@
-<!-- <div>
+<div>
   <mat-sidenav-container>
 
     <mat-sidenav color="accent" #sidenav opened="true" mode="side" class="example-sidenav">
@@ -6,25 +6,36 @@
       <mat-nav-list>
         <mat-list-item>
           <mat-icon mat-list-icon>dashboard</mat-icon>
-          <h4 mat-line> <a [routerLink]="['/users/admin-blog']">Dashboard</a></h4>
+          <h4 mat-line> <a [routerLink]="['/admin/dashboard']">Dashboard</a></h4>
         </mat-list-item>
         <mat-list-item>
-          <mat-icon mat-list-icon>person</mat-icon>
+          <mat-icon mat-list-icon>list</mat-icon>
           <h4 mat-line>
-            <a [routerLink]="['/users/admin-blog/blog-list']">Blog-list</a>
+            <a [routerLink]="['/admin/blog/blog-list']">Blog-list</a>
           </h4>
         </mat-list-item>
         <mat-list-item>
-            <mat-icon mat-list-icon>person</mat-icon>
+            <mat-icon mat-list-icon>create</mat-icon>
             <h4 mat-line>
-              <a [routerLink]="['/users/admin-blog/create-blog']">Create Blog</a>
+              <a [routerLink]="['/admin/blog/blog-create']">Create Blog</a>
             </h4>
           </mat-list-item>
           <mat-list-item>
-              <mat-icon mat-list-icon>person</mat-icon>
+              <mat-icon mat-list-icon>edit</mat-icon>
               <h4 mat-line>
-                <a [routerLink]="['/users/admin-blog/edit-blog']">Edit Blog</a>
+                <a >Edit Blog</a>
               </h4>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon mat-list-icon>add_box</mat-icon>
+              <h4 mat-line>
+                <a color="primary" [routerLink]="['/admin/manage-category']"> Manage Blog</a>
+              </h4>
+              <!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item>Item 1</button>
+                  <button mat-menu-item>Item 2</button>
+                </mat-menu> -->
             </mat-list-item>
             <mat-list-item>
                 <mat-icon mat-list-icon>person</mat-icon>
@@ -61,17 +72,15 @@
     </mat-sidenav>
 
     <mat-toolbar class="example-sidenav">
-      <span>Blog Example</span>
+      <span>Admin Panel</span>
     </mat-toolbar>
     <div class="main-content">
       <div>
-        <app-ats-blog></app-ats-blog>
+        <!-- <app-ats-blog></app-ats-blog> -->
+        <router-outlet></router-outlet>
+        <!-- <router-outlet name="manage"></router-outlet> -->
       </div>
     </div>
   </mat-sidenav-container>
 
-</div> -->
-fghfghfhfhjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhyuk
-<app-blog-view></app-blog-view>
-<button mat-raised-button color="accent" [routerLink]="['blog-list']">Blog list</button>
-<button mat-raised-button color="accent" [routerLink]="['blog-create']">Blog create</button>
+</div>

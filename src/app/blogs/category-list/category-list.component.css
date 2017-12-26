@@ -1,0 +1,10 @@
+.sub-card {
+  width: 150px;
+}
+
+.sub-card-section{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+}

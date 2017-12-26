@@ -1,0 +1,67 @@
+<!-- <mat-card class="example-card">
+  <mat-card-header>
+  </mat-card-header>
+  <mat-card-content>
+    <section class="header">
+      <section *ngFor="let list of categoryList">
+        <h1>{{list.categoryValue}}</h1>
+      </section>
+      <section>
+        <h1 >More</h1>
+      </section>
+    </section>
+  </mat-card-content>
+  <mat-card-actions>
+
+  </mat-card-actions>
+</mat-card> -->
+<mat-card class="example-card">
+  <mat-card-header>
+      <h1>Category List</h1>
+  </mat-card-header>
+  <mat-card-content>
+      <section *ngFor="let list of categoryList">
+        <!-- <h1>{{list.categoryValue}}</h1> -->
+        <mat-card class="example-card">
+          <mat-card-header>
+              <h1>{{list.categoryValue}}</h1>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-card class="example-card">
+              <mat-card-header>
+
+              </mat-card-header>
+              <mat-card-content>
+                <!-- <section *ngIf="list.subCategory.length"> -->
+                  <section  class="sub-card-section" >
+                    <section *ngFor="let subList of list.subCategory">
+                      <mat-card class="sub-card" (click)="gotToBlockListBySubcategory(list.categorykey, subList.categorykey)">
+                        <mat-card-header>
+                        </mat-card-header>
+                        <mat-card-content>
+                          <h1>{{subList.categoryValue}}</h1>
+                        </mat-card-content>
+                        <mat-card-actions>
+
+                        </mat-card-actions>
+                      </mat-card>
+                  </section>
+                </section>
+            <!-- </section> -->
+              </mat-card-content>
+              <mat-card-actions>
+
+              </mat-card-actions>
+            </mat-card>
+
+          </mat-card-content>
+          <mat-card-actions>
+
+          </mat-card-actions>
+        </mat-card>
+      </section>
+  </mat-card-content>
+  <mat-card-actions>
+
+  </mat-card-actions>
+</mat-card>
