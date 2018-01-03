@@ -6,7 +6,7 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogViewComponent } from './blog-view/blog-view.component';
 import { DemoComponent } from './demo/demo.component';
 import { CategoryListComponent } from './category-list/category-list.component';
-import { SubCategoryListComponent } from './sub-category-list/sub-category-list.component';
+// import { SubCategoryListComponent } from './sub-category-list/sub-category-list.component';
 // import { BlogTableComponent } from './blog-table/blog-table.component';
 
 // import { ManageCategoryComponent } from './admin-blog/manage-category/manage-category.component';
@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'blog-list', component: BlogListComponent},
   { path: 'blog-view', component:BlogViewComponent},
   { path: 'topics', component:CategoryListComponent},
-  { path: 'topics/:topics/:subTopic', component:SubCategoryListComponent},
+  // { path: 'topics/:topics/:subTopic', component:SubCategoryListComponent},
   // { path: 'blog-table', component:BlogTableComponent },
   { path: '', component: DemoComponent}
 ];

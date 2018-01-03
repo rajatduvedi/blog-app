@@ -4,6 +4,9 @@ import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@ang
 import {MatChipInputEvent} from '@angular/material';
 import {ENTER} from '@angular/cdk/keycodes';
 import { DataService } from './../../../app-services/data/data-service.service';
+import { DialogsService } from './../../../app-services/service/dialog/dialog.service';
+import { AppConfigService } from './../../../app-services/core/app.contants.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 const COMMA = 188;
 // import {FroalaEditorModule} from 'ng2-froala-editor/ng2-froala-editor';
 
@@ -33,13 +36,28 @@ export class BlogCreateComponent implements OnInit {
   removable: boolean = true;
   addOnBlur: boolean = true;
   imageCtrl = '';
+  currentBlogId;
   separatorKeysCodes = [ENTER, COMMA];
+  imagePath;
 
-  constructor(private _formBuilder: FormBuilder , private dataService: DataService) { }
+  constructor(private _formBuilder: FormBuilder,
+     private dataService: DataService,
+     private fileService: AppConfigService,
+     private activatedRoute: ActivatedRoute,
+     private router: Router,
+     private dialogsService:DialogsService) { }
 
   ngOnInit() {
     console.log(this.blogModel);
+    this.activatedRoute.queryParams.subscribe((params: Params) => {
+       this.currentBlogId = params['blogId'];
+       this.getcurrentBlogById(this.currentBlogId);
+     }, err => {
+       console.log(err);
+     }, () => {
+   });
     this.createBlogFormGroup = this._formBuilder.group({
+
       blogTitle: ['', Validators.required],
       category: ['',Validators.required],
       subCategory: [''],
@@ -50,7 +68,8 @@ export class BlogCreateComponent implements OnInit {
       authorName: ['Rajat'],
       authorImage: ['/assets/alt.jpg'],
       blogContent: ['', Validators.required],
-      totalLikes: ['1']
+      totalLikes: ['1'],
+      blogimageUrl:['']
     });
     this.getAllCategories();
     console.log(this.createBlogFormGroup);
@@ -58,6 +77,18 @@ export class BlogCreateComponent implements OnInit {
     var form = new FormData();
     console.log(form);
     console.log(typeof form);
+    this.baseUrl = this.fileService.getBaseFileServerUrl();
+
+  }
+
+  getcurrentBlogById(id){
+    this.dataService.getBlogById(id)
+      .subscribe(
+        res => {
+          console.log(res);
+          this.populateBlogCreateFromObject(res);
+        }
+      )
   }
 
   add(event: MatChipInputEvent, stmt): void {
@@ -96,17 +127,59 @@ export class BlogCreateComponent implements OnInit {
   //    }
   //  }
   }
+
+  uploadBlogImage() {
+    const fileBrowser = this.imageplayer.nativeElement;
+    const fileCount = fileBrowser.files.length;
+    console.log(fileBrowser.files[0]);
+    const formData = new FormData();
+    if (fileCount > 0) {
+      formData.append('blogImage', fileBrowser.files[0]);
+      this.dataService.uploadBlogImage(formData)
+        .subscribe(
+        res => {
+          console.log(res);
+          // this.createBlogFormGroup.value
+          console.log(this.baseUrl);
+          this.createBlogFormGroup.value.blogimageUrl = 'http://' +this.baseUrl + '/' + res.path;
+          console.log(this.createBlogFormGroup.value.blogimageUrl);
+          this.imageUploaded = true;
+          this.imagePath = this.createBlogFormGroup.value.blogimageUrl;
+        },
+        error => {
+          console.log(error);
+          this.anyErrors = true;
+        },
+        () => {
+          this.finished = true;
+        });
+    }
+  }
+
   submit() {
     const form = new FormData();
     console.log(form);
     console.log(this.tags);
     console.log(this.createBlogFormGroup.value);
+    this.createBlogFormGroup.value.blogimageUrl = this.imagePath;
     // this.createBlogFormGroup.value.category = this.category;
     this.createBlogFormGroup.value.tags = this.tags;
     console.log(this.createBlogFormGroup.value);
-    this.dataService.createBlog(this.createBlogFormGroup.value)
+    this.blogModel = <IBlog>this.createBlogFormGroup.value;
+    if(!this.currentBlogId){
+      this.blogModel._id = null
+    }
+    this.dataService.createBlog(this.blogModel)
       .subscribe(
         res =>{
+          if(res){
+            this.dialogsService.showConfirmDialog('', 'Blog created successfully', '','Ok' )
+              .subscribe(
+                response =>{
+                  // if()
+                }
+              )
+          }
           console.log(res);
         },
         error =>{
@@ -184,28 +257,22 @@ export class BlogCreateComponent implements OnInit {
     this.imageCtrl = this.imageCtrl + btoa(binaryString);
   }
 
-  uploadBlogImage() {
-    const fileBrowser = this.imageplayer.nativeElement;
-    const fileCount = fileBrowser.files.length;
-    console.log(fileBrowser.files[0]);
-    const formData = new FormData();
-    if (fileCount > 0) {
-      formData.append('blogImage', fileBrowser.files[0]);
-      this.dataService.uploadBlogImage(formData)
-        .subscribe(
-        res => {
-          console.log(res);
-          this.createBlogFormGroup.value.imageUrl = 'http://' + this.baseUrl + '/' + res.path;
-          this.imageUploaded = true;
-        },
-        error => {
-          console.log(error);
-          this.anyErrors = true;
-        },
-        () => {
-          this.finished = true;
-        });
-    }
+  populateBlogCreateFromObject(blogData){
+    console.log(blogData);
+    this.blogModel = blogData;
+    this.createBlogFormGroup.patchValue({ blogTitle: blogData.blogTitle });
+    this.createBlogFormGroup.patchValue({ excerptText: blogData.excerptText });
+    this.createBlogFormGroup.patchValue({ blogContent: blogData.blogContent });
+    this.createBlogFormGroup.patchValue({ imageUrl: blogData.imageUrl });
+    this.createBlogFormGroup.patchValue({ category: blogData.category });
+    this.createBlogFormGroup.patchValue({ subCategory: blogData.subCategory });
+    this.createBlogFormGroup.patchValue({ tags: blogData.tags });
+    this.createBlogFormGroup.patchValue({ blogimageUrl: blogData.blogimageUrl });
+    this.createBlogFormGroup.patchValue({ _id: blogData._id });
+    // this.imageCtrl = blogData.blogimageUrl
+    this.imageCtrl = this.createBlogFormGroup.value.blogimageUrl;
   }
+
+
 
 }

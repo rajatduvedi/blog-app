@@ -1,9 +1,9 @@
-.example-card {
+.categoryList-card-card {
   width: 1300px;
   margin: 0px auto;
 }
 
-.example-header-image {
+.categoryList-card-header-image {
   background-image: url('http://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
@@ -20,3 +20,6 @@
   background-size: cover;
   height: 40px
 }*/
+#category{
+  cursor: pointer;
+}

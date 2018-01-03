@@ -9,7 +9,7 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
 { path: 'admin', loadChildren: './admin-blog/admin-blog.module#AdminBlogModule' },
-{ path: 'blog', loadChildren: './blogs/blog.module#BlogModule' },
+// { path: 'blog', loadChildren: './blogs/blog.module#BlogModule' },
 { path: '', loadChildren: './home/home.module#HomeModule' },
 // { path: '', component: HomeComponent}
 

@@ -1,4 +1,4 @@
-.example-card {
+.homeView-card {
   width: 1300px;
   margin: 0px auto;
 }
@@ -9,6 +9,21 @@
 }
 
 .blog-card{
-  width: 1200px;
-  margin: 0px auto;
+  width: 300px;
+  /*margin: 0px auto;*/
+}
+
+.containerHeader{
+  display: flex;
+  flex-direction: row;
+    flex-flow: wrap;
+  justify-content: space-around;
+}
+#categoryName{
+  display: inline-block;
+}
+#actionButton{
+  float:right;
+  display: inline-block;
+  cursor: pointer;
 }

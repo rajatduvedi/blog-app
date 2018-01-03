@@ -10,7 +10,8 @@ export class DataService {
   private createNewCategoryUrl = 'http://localhost:3000/api/createCategory';
   private createBlogUrl = 'http://localhost:3000/api/createBlog';
   private getAllBlogUrl = 'http://localhost:3000/api/getAllBlogs';
-  private getRecentBlogUrl = 'http://localhost:3000/api//getRecentBlog';
+  private deleteBlogByIdUrl = 'http://localhost:3000/api/deleteBlogById';
+
   private uploadBlogImageUrl = 'http://localhost:3000/api/uploadBlogImage';
   constructor(
     private http: Http,
@@ -75,10 +76,21 @@ export class DataService {
       });
   }
 
-  getBlogBysubcategory(data){
+  getBlogBysubcategory(data, index){
     var category = data.categorykey;
     var subCategory = data.subCategoryKey;
-    const getBlogBysubcategoryUrl = 'http://localhost:3000/api/getBlogBysubcategory/' + category + '/'+ subCategory ;
+    const getBlogBysubcategoryUrl = 'http://localhost:3000/api/getBlogBysubcategory/' + category + '/'+ subCategory + '/'+ index;
+    const headers = new Headers();
+    return this.http.get(getBlogBysubcategoryUrl, { headers: headers })
+      .map((res: Response) => {
+        console.log(res.json());
+        return res.json();
+      });
+  }
+  getBlogBycategory(data, index){
+    var category = data.categorykey;
+    var subCategory = data.subCategoryKey;
+    const getBlogBysubcategoryUrl = 'http://localhost:3000/api/getBlogBycategory/' + category + '/'+ index;
     const headers = new Headers();
     return this.http.get(getBlogBysubcategoryUrl, { headers: headers })
       .map((res: Response) => {
@@ -87,11 +99,12 @@ export class DataService {
       });
   }
 
-  getrecentyBlogs(){
+  getrecentyBlogs(index){
+    const getRecentBlogUrl = 'http://localhost:3000/api/getRecentBlog/'+index;
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     console.log(headers);
-    return this.http.get(this.getRecentBlogUrl, { headers: headers })
+    return this.http.get(getRecentBlogUrl, { headers: headers })
       .map((res: Response) => {
         console.log('****   data service saveCourse returned value from DB');
         console.log(res);
@@ -108,9 +121,36 @@ export class DataService {
       });
   }
 
-  // getBlogBysubcategory(category) {
-  //
-  // }
+  getPopularBlogs(index){
+    const getPopularBlogUrl = 'http://localhost:3000/api/getPopularBlog/'+index;
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log(headers);
+    return this.http.get(getPopularBlogUrl, { headers: headers })
+      .map((res: Response) => {
+        console.log('****   data service saveCourse returned value from DB');
+        console.log(res);
+        return res.json();
+      });
+  }
+  deleteBlogById(data){
+    console.log(data);
+
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log(headers);
+    return this.http.post(this.deleteBlogByIdUrl, {_id: data}, { headers: headers })
+      .map((res: Response) => {
+        console.log('****   data service saveCourse returned value from DB');
+        console.log(res);
+        return res.json();
+      });
+
+  }
+
+  deleteCategory(data){
+
+  }
 
 
 

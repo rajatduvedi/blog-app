@@ -29,7 +29,7 @@ export class CategoryListComponent implements OnInit {
   }
 
   gotToBlockListBySubcategory(cat, subcat){
-    this.router.navigate(['/blog/topics',cat, subcat]);
+    this.router.navigate(['/topics',cat, subcat]);
   }
 
 }

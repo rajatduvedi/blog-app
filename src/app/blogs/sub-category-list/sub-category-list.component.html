@@ -1,11 +1,13 @@
 
 <mat-card class="example-card">
   <mat-card-header>
+    <span *ngIf="subCategoryKey">
       <h1>{{subCategoryKey.toUpperCase()}}</h1>
+    </span>
   </mat-card-header>
   <mat-card-content>
     <section class="blogList">
-    <section *ngFor="let blog of blogModel" >
+    <section *ngFor="let blog of blogModelcon" >
       <section>
       <mat-card class="blog-card">
         <mat-card-header>
@@ -14,10 +16,14 @@
           <mat-card-subtitle>{{blog.category}}</mat-card-subtitle>
 
         </mat-card-header>
-        <img mat-card-image src="/assets/image2.jpg" alt="Photo of a Shiba Inu">
+
         <mat-card-content>
+            <div class="image">
+              <img mat-card-image id="imageBlog" [src]="blog.blogimageUrl" >
+            </div>
+
             <h2>{{blog.blogTitle}}</h2>
-          {{blog.excerptText}} ....<button mat-button (click)="gotoBlogView(blog._id)">.....Read More</button>
+            <span id="contentHtmlBlog">{{blog.excerptText}}</span> <button mat-button (click)="gotoBlogView(blog._id)">.....Read More</button>
         </mat-card-content>
         <mat-card-actions>
           <button mat-button>LIKE</button>
@@ -32,3 +38,6 @@
 
   </mat-card-actions>
 </mat-card>
+<div *ngIf="check">
+<button mat-button (click)="viewMore()">LoadMore</button>
+</div>

@@ -6,12 +6,21 @@
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{blog.authorName}}</mat-card-title>
       <mat-card-subtitle>{{blog.category}}</mat-card-subtitle>
-
+      <div class="menuAction">
+        <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item matTooltip="Edit Blog click here" (click)="editBlog(blog._id)"><mat-icon>edit</mat-icon></button>
+          <button mat-menu-item matTooltip="Change Status click here"><mat-icon>Active</mat-icon></button>
+          <button mat-menu-item matTooltip="Delete Blog click here" (click)="deleteBlog(blog._id)"><mat-icon>delete</mat-icon></button>
+        </mat-menu>
+      </div>
     </mat-card-header>
-    <img mat-card-image src="/assets/image2.jpg" alt="Photo of a Shiba Inu">
     <mat-card-content>
-        <h2>{{blog.blogTitle}}</h2>
-      {{blog.excerptText}} ....<button mat-button (click)="gotoBlogView(blog._id)">.....Read More</button>
+      <div class="image">
+        <img mat-card-image id="imageBlog" [src]="blog.blogimageUrl" >
+      </div>
+      <h2>{{blog.blogTitle}}</h2>
+      <span id="contentHtmlBlog">{{blog.excerptText}}</span><button mat-button (click)="gotoBlogView(blog._id)">.....Read More</button>
     </mat-card-content>
     <mat-card-actions>
       <button mat-button>LIKE</button>

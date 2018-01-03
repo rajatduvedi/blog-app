@@ -13,10 +13,13 @@ import { AppRoutingModule } from './app-routing.module';
 // import { DemoComponent } from './demo/demo.component';
 import { CarouselComponent }from '././common-modules/carousel/carousel.component';
 import { DataService } from '../app-services/data/data-service.service';
+import { AppConfigService } from '../app-services/core/app.contants.service';
+import { DialogsService } from '../app-services/service/dialog/dialog.service';
 import { CapitalizePipe } from '../app-services/data/pipe.service';
 // import { BlogCreateComponent } from './blogs/blog-create/blog-create.component';
 // import { BlogListComponent } from './blogs/blog-list/blog-list.component';
 import { BlogModule } from './blogs/blog.module';
+import {ConfirmDialogComponent} from '../app-services/service/dialog/confirm-dialog.component'
 // import { HomeComponent } from './home/home.component';
 // import { DemoComponent } from './blogs/demo/demo.component';
 @NgModule({
@@ -24,6 +27,7 @@ import { BlogModule } from './blogs/blog.module';
     AppComponent,
     // DemoComponent,
     CapitalizePipe,
+    ConfirmDialogComponent
     // HomeComponent,
     // DemoComponent,
     // BlogCreateComponent,
@@ -53,12 +57,13 @@ import { BlogModule } from './blogs/blog.module';
     BrowserAnimationsModule,
     MatChipsModule,
     HttpModule,
+
     // BlogModule
 
   ],
   exports:[],
-
-  providers: [CarouselComponent, DataService],
+  entryComponents: [ConfirmDialogComponent],
+  providers: [CarouselComponent, DataService, AppConfigService, DialogsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

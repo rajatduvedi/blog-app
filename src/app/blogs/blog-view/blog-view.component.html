@@ -1,16 +1,21 @@
-<button mat-raised-button color="accent" (click)="goToPrevious()">Back</button>
-<mat-card class="example-card">
+<!-- <button mat-raised-button color="accent" (click)="goToPrevious()">Back</button> -->
+<mat-card class="view-card">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{blogModel.authorName}}</mat-card-title>
     <mat-card-subtitle>Mean stack Developer / content writer </mat-card-subtitle>
     <mat-card-subtitle>15 Dec.   {{blogModel.readingTime}} </mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="/assets/image2.jpg" alt="Photo of a Shiba Inu">
-  <mat-card-content>
-    <h1>{{blogModel.blogTitle}}</h1>
-    <!-- <code>{{blogModel.blogContent}}</code> -->
-    <h4><span class="content" [innerHTML]="blogModel.blogContent"></span></h4>
+  <!-- <img mat-card-image [src]="blogModel.blog" alt="Photo of a Shiba Inu"> -->
+  <mat-card-content id="view-card-content">
+    <div class="image">
+      <img mat-card-image id="imageBlog" [src]="blogModel.blogimageUrl" >
+    </div>
+    <div class="blogContent">
+      <h1>{{blogModel.blogTitle}}</h1>
+      <!-- <code>{{blogModel.blogContent}}</code> -->
+      <h4><span class="contentHtml" [innerHTML]="blogModel.blogContent"></span></h4>
+    </div>
   </mat-card-content>
   <mat-card-actions>
     <section class="action">

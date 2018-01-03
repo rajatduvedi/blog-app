@@ -7,11 +7,14 @@ import { RouterModule, Routes } from '@angular/router';
 // import { BlogViewComponent } from './blogs/blog-view/blog-view.component';
 import { HomeComponent } from './home.component';
 import { HomeHeaderComponent } from './home-header/home-header.component';
+import { SubCategoryListComponent } from '../blogs/sub-category-list/sub-category-list.component';
 
 const routes: Routes = [
 
 { path: '', component: HomeComponent},
-{ path: '', component: HomeHeaderComponent , outlet:"header"}
+{ path: '', component: HomeHeaderComponent , outlet:"header"},
+{ path: 'blog', loadChildren: '../blogs/blog.module#BlogModule' },
+{ path: 'topics/:topics/:subTopic', component:SubCategoryListComponent},
 
 ];
 

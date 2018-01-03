@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { DataService } from '../../app-services/data/data-service.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { SubCategoryListComponent } from '../blogs/sub-category-list/sub-category-list.component';
 // import { CarouselComponent }from '.././common-modules/carousel/carousel.component';
 @Component({
   selector: 'app-home',
@@ -27,24 +28,20 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getrecentyBlogsList();
+
   }
 
-  getrecentyBlogsList(){
-    this.dataService.getrecentyBlogs()
-      .subscribe(
-        res =>{
-    console.log(res);
-    this.blogList = res;
-        }
-      )
-  }
+
 
   gotoBlogView(data) {
     // [routerLink]="['/'+this.urlstr[1]+'/blog-view']"
     console.log(data);
     this.router.navigate(['/blog/blog-view'], {queryParams: { blogId: data } });
 
+  }
+
+  gotToBlockListBySubcategory(cat, subcat){
+    this.router.navigate(['/topics',cat, subcat]);
   }
 
 }

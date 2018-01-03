@@ -7,7 +7,7 @@ import { DemoComponent } from './demo/demo.component';
 import { MatRadioModule, MatButtonModule, MatIconModule, MatFormFieldModule,
   MatInputModule, MatSliderModule, MatSelectModule, MatExpansionModule, MatDatepickerModule, MatNativeDateModule,
   MatCheckboxModule, MatDialogModule, MatStepperModule, MatSlideToggleModule, MatCardModule, MatListModule,
-  MatChipsModule,MatTooltipModule, MatSidenavModule, MatToolbarModule, MatMenuModule, MatTableModule
+  MatChipsModule,MatTooltipModule, MatSidenavModule, MatToolbarModule, MatMenuModule, MatTableModule,
 } from '@angular/material';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,7 +16,7 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogViewComponent } from './blog-view/blog-view.component';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { CategoryListComponent } from './category-list/category-list.component';
-import { SubCategoryListComponent } from './sub-category-list/sub-category-list.component';
+// import { SubCategoryListComponent } from './sub-category-list/sub-category-list.component';
 
 // import { CarouselComponent }from './../common-modules/carousel/carousel.component';
 
@@ -52,7 +52,7 @@ import { SubCategoryListComponent } from './sub-category-list/sub-category-list.
     CKEditorModule,
     MatChipsModule
   ],
-  declarations: [ DemoComponent, BlogCreateComponent, BlogListComponent, BlogViewComponent, CategoryListComponent, SubCategoryListComponent],
+  declarations: [ DemoComponent, BlogCreateComponent, BlogListComponent, BlogViewComponent, CategoryListComponent],
   exports: [ DemoComponent, BlogCreateComponent, BlogListComponent, BlogViewComponent],
   entryComponents: [DemoComponent]
 })

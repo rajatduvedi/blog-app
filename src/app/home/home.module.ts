@@ -15,6 +15,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { HomeHeaderComponent } from './home-header/home-header.component';
 import { CarouselComponent }from './carousel/carousel.component';
+import { SubCategoryListComponent } from '../blogs/sub-category-list/sub-category-list.component';
 // import {FroalaEditorModule} from 'ng2-froala-editor/ng2-froala-editor'; // <-- Import it in your NgModule
 @NgModule({
   imports: [
@@ -49,7 +50,7 @@ import { CarouselComponent }from './carousel/carousel.component';
     MatChipsModule
   ],
   // schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  declarations: [HomeComponent, HomeHeaderComponent, CarouselComponent],
+  declarations: [HomeComponent, HomeHeaderComponent, CarouselComponent, SubCategoryListComponent],
   providers: [],
   exports: [],
   entryComponents: []

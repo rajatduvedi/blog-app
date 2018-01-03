@@ -35,4 +35,9 @@ export class HomeHeaderComponent implements OnInit {
     // alert("  +To Do+ // go to all category page")
   }
 
+  goToBlogList(data){
+    console.log(data);
+    this.router.navigate(['/topics',data, data]);
+  }
+
 }
