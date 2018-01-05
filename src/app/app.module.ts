@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatRadioModule, MatButtonModule, MatIconModule, MatFormFieldModule,
   MatInputModule, MatSliderModule, MatSelectModule, MatExpansionModule, MatDatepickerModule, MatNativeDateModule,
   MatCheckboxModule, MatDialogModule, MatStepperModule, MatSlideToggleModule, MatCardModule, MatListModule, MatToolbarModule,
-  MatChipsModule
+  MatChipsModule,MatProgressSpinnerModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -63,6 +63,7 @@ import { ResponsePageComponent } from './iamModule/response-page/response-page.c
     MatToolbarModule,
     BrowserAnimationsModule,
     MatChipsModule,
+    MatProgressSpinnerModule,
     HttpModule,
     FormsModule, ReactiveFormsModule
 

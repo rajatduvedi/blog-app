@@ -9,7 +9,7 @@ const routes: Routes = [
 { path: 'admin', loadChildren: './admin-blog/admin-blog.module#AdminBlogModule' },
 // { path: 'blog', loadChildren: './blogs/blog.module#BlogModule' },
 { path: '', loadChildren: './home/home.module#HomeModule' },
-{ path: 'register', component: UserRegistrationComponent}
+{ path: 'register', component: UserRegistrationComponent},
 { path: 'response', component: ResponsePageComponent}
 
 ];
