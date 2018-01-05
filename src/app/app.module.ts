@@ -19,7 +19,11 @@ import { CapitalizePipe } from '../app-services/data/pipe.service';
 // import { BlogCreateComponent } from './blogs/blog-create/blog-create.component';
 // import { BlogListComponent } from './blogs/blog-list/blog-list.component';
 import { BlogModule } from './blogs/blog.module';
-import {ConfirmDialogComponent} from '../app-services/service/dialog/confirm-dialog.component'
+import {ConfirmDialogComponent} from '../app-services/service/dialog/confirm-dialog.component';
+import { UserRegistrationComponent } from './iamModule/user-registration/user-registration.component';
+import { UserLoginComponent } from './iamModule/user-login/user-login.component'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ResponsePageComponent } from './iamModule/response-page/response-page.component';
 // import { HomeComponent } from './home/home.component';
 // import { DemoComponent } from './blogs/demo/demo.component';
 @NgModule({
@@ -27,7 +31,10 @@ import {ConfirmDialogComponent} from '../app-services/service/dialog/confirm-dia
     AppComponent,
     // DemoComponent,
     CapitalizePipe,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    UserRegistrationComponent,
+    UserLoginComponent,
+    ResponsePageComponent
     // HomeComponent,
     // DemoComponent,
     // BlogCreateComponent,
@@ -57,12 +64,13 @@ import {ConfirmDialogComponent} from '../app-services/service/dialog/confirm-dia
     BrowserAnimationsModule,
     MatChipsModule,
     HttpModule,
+    FormsModule, ReactiveFormsModule
 
     // BlogModule
 
   ],
   exports:[],
-  entryComponents: [ConfirmDialogComponent],
+  entryComponents: [ConfirmDialogComponent, UserRegistrationComponent],
   providers: [CarouselComponent, DataService, AppConfigService, DialogsService],
   bootstrap: [AppComponent]
 })

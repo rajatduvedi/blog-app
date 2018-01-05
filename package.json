@@ -27,6 +27,7 @@
     "angular-medium-editor": "^4.0.0-alpha",
     "angular2-medium-editor": "^1.0.6",
     "core-js": "^2.4.1",
+    "font-awesome": "^4.7.0",
     "medium-editor": "^5.23.2",
     "ng2-ckeditor": "^1.1.9",
     "ng2-froala-editor": "^1.0.17",

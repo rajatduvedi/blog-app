@@ -1,17 +1,16 @@
 import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-// import { DemoComponent } from './blogs/demo/demo.component';
-// import { BlogCreateComponent } from './blogs/blog-create/blog-create.component';
-// import { BlogListComponent } from './blogs/blog-list/blog-list.component';
-// import { BlogViewComponent } from './blogs/blog-view/blog-view.component';
+import { UserRegistrationComponent } from './iamModule/user-registration/user-registration.component';
 import { HomeComponent } from './home/home.component';
+import { ResponsePageComponent } from './iamModule/response-page/response-page.component';
 
 const routes: Routes = [
 { path: 'admin', loadChildren: './admin-blog/admin-blog.module#AdminBlogModule' },
 // { path: 'blog', loadChildren: './blogs/blog.module#BlogModule' },
 { path: '', loadChildren: './home/home.module#HomeModule' },
-// { path: '', component: HomeComponent}
+{ path: 'register', component: UserRegistrationComponent}
+{ path: 'response', component: ResponsePageComponent}
 
 ];
 

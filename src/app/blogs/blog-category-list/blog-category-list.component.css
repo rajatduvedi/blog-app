@@ -2,10 +2,6 @@
   width: 300px;
   margin-bottom: 15px;
 }
-.blog-head-card{
-  width: 90%;
-  margin: 0px auto;
-}
 .blogList{
   display: flex;
   flex-flow: wrap;
@@ -28,6 +24,10 @@ margin-top: 25px;
 }
 .side-content{
   /*height: 80px;*/
+}
+.blog-head-card{
+  width: 90%;
+  margin: 0px auto;
 }
 
 /*.content{

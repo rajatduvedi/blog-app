@@ -20,7 +20,9 @@ export class SubCategoryListComponent implements OnInit, OnDestroy, AfterContent
   urlstr=[];
   loadnumber =0;
   check;
-  constructor(private route: ActivatedRoute, private dataService: DataService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private dataService: DataService, private router: Router) {
+    console.log("called");
+  }
 
   ngOnInit() {
     console.log(this.passData);
@@ -59,12 +61,6 @@ export class SubCategoryListComponent implements OnInit, OnDestroy, AfterContent
   this.urlstr = this.router.url.split("/");
   console.log(this.urlstr);
 
-  if(this.subCategoryKey === this.categorykey){
-
-    localStorage.setItem('prevCategory', this.categorykey);
-    this.getBlogBycategory(this.loadnumber);
-
-  }
 
   }
   ngAfterContentInit(){
@@ -137,23 +133,6 @@ export class SubCategoryListComponent implements OnInit, OnDestroy, AfterContent
       )
   }
 
-  getBlogBycategory(loadnumber){
-    this.dataService.getBlogBycategory({categorykey: this.categorykey},loadnumber)
-      .subscribe(
-        res =>{
-          console.log(res);
-          // this.blogModelcon = res;
-          this.blogModel = res;
-
-          if(this.blogModelcon){
-              this.blogModelcon = this.blogModelcon.concat(res);
-          }
-          else{
-                this.blogModelcon = this.blogModel.concat(res);
-          }
-        }
-      )
-  }
 
   gotoBlogView(data) {
     // [routerLink]="['/'+this.urlstr[1]+'/blog-view']"

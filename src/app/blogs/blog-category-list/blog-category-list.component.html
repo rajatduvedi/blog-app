@@ -1,8 +1,9 @@
 
 <div class="blog-head-card">
-    <span *ngIf="subCategoryKey">
-      <h1>{{subCategoryKey.toUpperCase()}}</h1>
+    <span *ngIf="categorykey">
+      <h1>{{categorykey.toUpperCase()}}</h1>
     </span>
+    <h2><span [innerHtml]="Showmsg"></span></h2>
     <section class="blogList">
     <section *ngFor="let blog of blogModelcon" >
       <section>
@@ -30,7 +31,7 @@
       </section>
     </section>
     </section>
-</div>
+  </div>
 <div *ngIf="check">
 <button mat-button (click)="viewMore()">LoadMore</button>
 </div>

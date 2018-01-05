@@ -1,29 +1,20 @@
-
-<mat-card class="homeView-card">
-  <mat-card-header>
-  </mat-card-header>
-  <mat-card-content>
+<div class="homeView-card ">
     <h1>Biography</h1>
-  <app-carousel [imageList]="imageList" [variable]="1"></app-carousel>
-  <div>
-    <h1 id="categoryName">Recently Added Blogs</h1>
-     <div (click)="gotToBlockListBySubcategory(1,'recent')" id="actionButton">
-    <h4>  ...more</h4>
+    <app-carousel [imageList]="imageList" [variable]="1"></app-carousel>
+    <div>
+      <h1 id="categoryName">Recently Added Blogs</h1>
+       <div (click)="gotToBlockListBySubcategory(1,'recent')" id="actionButton">
+      <h4>  ...more</h4>
+      </div>
     </div>
-  </div>
+      <section class="containerHeader">
+        <app-sub-category-list [passData]="'recent'"></app-sub-category-list>
+    </section>
+    <h1 id="categoryName">Popular Blogs</h1>
+     <div (click)="gotToBlockListBySubcategory(1,'popular')"  id="actionButton">
+       <h4>...more</h4>
+     </div>
     <section class="containerHeader">
-      <app-sub-category-list [passData]="'recent'"></app-sub-category-list>
+      <app-sub-category-list [passData]="'popular'"></app-sub-category-list>
   </section>
-  <h1 id="categoryName">Popular Blogs</h1>
-   <div (click)="gotToBlockListBySubcategory(1,'popular')"  id="actionButton">
-     <h4>...more</h4>
-   </div>
-  <section class="containerHeader">
-    <app-sub-category-list [passData]="'popular'"></app-sub-category-list>
-</section>
-    <h1></h1>
-  </mat-card-content>
-  <mat-card-actions>
-
-  </mat-card-actions>
-</mat-card>
+  </div>

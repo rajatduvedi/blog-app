@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class HomeHeaderComponent implements OnInit {
-  categoryList= []
+  categoryList= [];
+
+
 
   constructor(private dataService: DataService, private router: Router) { }
 
@@ -37,7 +39,7 @@ export class HomeHeaderComponent implements OnInit {
 
   goToBlogList(data){
     console.log(data);
-    this.router.navigate(['/topics',data, data]);
+    this.router.navigate(['/topics',data]);
   }
 
 }

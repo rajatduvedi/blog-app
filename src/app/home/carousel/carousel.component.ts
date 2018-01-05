@@ -13,13 +13,16 @@ export class CarouselComponent implements OnInit {
   @ViewChild('carouselwrapper') elementView;
   childIndex: number = 0;
   amount: number = 0;
+  imgwidth = 600;
+  totalAmount;
   public images: any;
   data: any;
   constructor() {
 }
 
   ngOnInit() {
-    alert(this.amount)
+    alert(this.imageList. length)
+    this.totalAmount = this.imgwidth * (this.imageList.length -2);
     this.data = this.categoryList
     console.log(this.categoryList);
     console.log(this.imageList);

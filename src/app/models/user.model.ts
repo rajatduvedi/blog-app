@@ -26,7 +26,6 @@ export interface IUser {
     userProfileName: string; // user profile name displayed on the blog etc. can be edited on profile page
     firstName?: string;
     lastName?: string;
-    middleName?: string;
     roles?: string[];
     email?: string;
     phone?: string;

@@ -8,18 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-blog.component.scss']
 })
 export class AdminBlogComponent implements OnInit {
-
+  tooltipPosition = 'above';
+  show = false;
+  showFiller = false;
   constructor() { }
 
   ngOnInit() {
     // alert("admin")
   }
 
-  // showInPopup() {
-  //   let dialogRef = this.dialog.open(BlogComponent, {
-  //     height: '400px',
-  //     width: '600px',
-  //   });
+  showSideMenu(data){
+    if(data === 'Blogs'){
+      this.show = true;
+    }
+    else{
+        this.show = false;
+    }
+  }
+  // manageBlog(){
+  //   this.showmanage = true;
   // }
 
 }
