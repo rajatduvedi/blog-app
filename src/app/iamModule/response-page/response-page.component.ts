@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { DataService } from '../../../app-services/data/data-service.service';
 
 @Component({
   selector: 'app-response-page',
@@ -8,9 +9,15 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class ResponsePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.getResponsefromLocalStroage();
   }
+  getResponsefromLocalStroage(){
+    console.log(this.dataService.getLocalStroageUser())
+  }
+
+  
 
 }

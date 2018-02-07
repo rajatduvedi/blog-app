@@ -1,6 +1,6 @@
 
-
-<div class="pop-card">
+<section *ngIf="!boxPanel">
+<div class="pop-card" >
   <div class="titleheader">
     <h1> <span [innerHtml]="titlepopup"></span></h1>
   </div>
@@ -21,4 +21,9 @@
   <mat-card-actions>
   </mat-card-actions>
 </div>
-<!-- <mat-spinner></mat-spinner> -->
+</section>
+<section *ngIf="boxPanel">
+<div >
+<mat-spinner></mat-spinner>
+</div>
+</section>

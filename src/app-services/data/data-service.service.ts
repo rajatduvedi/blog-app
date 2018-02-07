@@ -17,6 +17,9 @@ export class DataService {
     private http: Http,
   ) {}
 
+  getLocalStroageUser(){
+    return JSON.parse(localStorage.getItem('currentuser'))
+  }
 
   getAllCategory() {
     const headers = new Headers();

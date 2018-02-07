@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
         }
       )
 
+      this.getResponsefromLocalStroage();
   }
 
   openRegPopup() {
@@ -40,5 +41,9 @@ export class AppComponent implements OnInit {
       console.log('The dialog was closed');
       console.log(result);
     });
+  }
+
+  getResponsefromLocalStroage(){
+    console.log(this.dataService.getLocalStroageUser())
   }
 }

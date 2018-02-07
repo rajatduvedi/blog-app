@@ -1,7 +1,10 @@
 import { Component, OnInit,Inject, ViewEncapsulation } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { IUser, User} from '../../models/user.model';
+import { IUser, User,} from '../../models/user.model';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+// import { DataService } from '../../../app-services/data/data-service.service';
 declare const gapi: any;
 @Component({
   selector: 'app-user-registration',
@@ -13,6 +16,8 @@ export class UserRegistrationComponent implements OnInit {
   userRegistrationFormGroup: FormGroup;
   public auth2: any;
   titlepopup = 'Join us'
+  boxPanel = false;
+  userDetail: IUser = new User('')
   private scope = [
    'profile',
    'email',
@@ -21,7 +26,9 @@ export class UserRegistrationComponent implements OnInit {
    'https://www.googleapis.com/auth/admin.directory.user.readonly'
  ].join(' ');
   constructor(private formBuilder: FormBuilder,
-    public thisDialogRef: MatDialogRef<UserRegistrationComponent>,
+    private location: Location,
+    private router: Router,
+    public dialogRef: MatDialogRef<UserRegistrationComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
 
@@ -56,6 +63,7 @@ public attachSignin(element) {
     (googleUser) => {
 
 
+
       let profile = googleUser.getBasicProfile();
       console.log('Token || ' + googleUser.getAuthResponse().id_token);
       console.log('ID: ' + profile.getId());
@@ -63,11 +71,30 @@ public attachSignin(element) {
       console.log('Image URL: ' + profile.getImageUrl());
       console.log('Email: ' + profile.getEmail());
       //YOUR CODE HERE
+      this.userDetail.token =  googleUser.getAuthResponse().id_token;
+      this.userDetail.userId = profile.getId();
+      this.userDetail.userProfileName = profile.getName();
+      this.userDetail.imageUrl =  profile.getImageUrl();
+      this.userDetail.email = profile.getEmail();
+      if(this.userDetail){
+        this.boxPanel =  true;
+      }
+      // console.log(this.userDetail);
+      this.saveDetails();
 
+      // this.router.navigate(['response']);
+      // location.reload()
 
     }, (error) => {
       // alert(JSON.stringify(error, undefined, 2));
     });
-}
+  }
+
+  saveDetails(){
+
+    localStorage.setItem('currentuser',JSON.stringify(this.userDetail))
+
+    this.dialogRef.close();
+  }
 
 }

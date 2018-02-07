@@ -22,6 +22,7 @@ large -- detailed profile like, address , and other UserDetailsPage.
 
 export interface IUser {
     _id?: string; // database ID
+    token: string;
     userId: string; // uniquely identifies the user
     userProfileName: string; // user profile name displayed on the blog etc. can be edited on profile page
     firstName?: string;
@@ -39,6 +40,7 @@ export interface IUser {
 
 export class User implements IUser {
     _id?: string; // database ID
+    token: string;
     userId: string; // uniquely identifies the user
     userProfileName: string; // username displayed on the blog etc.
     firstName?: string;
